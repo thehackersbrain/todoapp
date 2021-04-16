@@ -1,6 +1,17 @@
 import "../CSS/TodoForm.css";
+import React, { useState } from "react";
 
-function TodoForm() {
+function TodoForm(props) {
+	const [title, setTitle] = useState("");
+	const [desc, setDesc] = useState("");
+	const addTodo = (e) => {
+		e.preventDefault();
+		if (!title || !desc) {
+			alert("Fields cannot be blank. :)");
+		}
+		props.addTodo(title, desc);
+	};
+
 	return (
 		<div className="container" style={{ fontFamily: '"Montserrat"' }}>
 			<button
@@ -9,7 +20,7 @@ function TodoForm() {
 				data-bs-toggle="modal"
 				data-bs-target="#todoform"
 			>
-				<i class="bx bx-plus"></i>
+				<i className="bx bx-plus"></i>
 			</button>
 			<div
 				className="modal fade"
@@ -33,13 +44,17 @@ function TodoForm() {
 						</div>
 						<div className="modal-body">
 							<div className="container">
-								<form method="GET">
+								<form onSubmit={addTodo}>
 									<div className="mb-3">
 										<input
 											type="text"
 											className="form-control"
 											id="todotitle"
 											placeholder="Enter Title"
+											value={title}
+											onChange={(e) =>
+												setTitle(e.target.value)
+											}
 											required
 										/>
 									</div>
@@ -50,7 +65,10 @@ function TodoForm() {
 											rows={3}
 											placeholder="Enter Description"
 											required
-											defaultValue={""}
+											value={desc}
+											onChange={(e) =>
+												setDesc(e.target.value)
+											}
 										/>
 									</div>
 									<div className="modal-footer">

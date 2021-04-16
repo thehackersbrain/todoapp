@@ -14,6 +14,18 @@ function App() {
 		);
 	};
 
+	const addTodo = (title, desc) => {
+		// let sno = todos[todos.length - 1].sno + 1;
+		let sno = todos.length + 1;
+		const todoValue = {
+			sno: sno,
+			title: title,
+			desc: desc,
+		};
+		setTodos([...todos, todoValue]);
+		console.log(todoValue);
+	};
+
 	const [todos, setTodos] = useState([
 		{
 			sno: 1,
@@ -37,7 +49,7 @@ function App() {
 			<Navbar title="Todo App" />
 			<Todos todos={todos} onDelete={onDelete} />
 			<Footer />
-			<TodoForm />
+			<TodoForm addTodo={addTodo} />
 		</div>
 	);
 }
