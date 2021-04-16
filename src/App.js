@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./Assets/Components/Navbar";
 import Todos from "./Assets/Components/Todos";
 import Footer from "./Assets/Components/Footer";
+import TodoForm from "./Assets/Components/TodoForm";
 import React, { useState } from "react";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 			<Navbar title="Todo App" />
 			<Todos todos={todos} onDelete={onDelete} />
 			<Footer />
+			<TodoForm />
 		</div>
 	);
 }

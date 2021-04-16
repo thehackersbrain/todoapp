@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+.addBtn {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	z-index: 99;
+	border: none;
+	background-color: #0d6efd;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 75px;
+	font-size: 28px;
+}
