@@ -15,7 +15,7 @@ function TodoItem(props) {
 								Done
 							</button>
 						</div>
-						<div className="col-sm my-3">
+						<div className="col-sm">
 							<button
 								type="button"
 								className="btn btn-outline-danger"

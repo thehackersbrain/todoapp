@@ -3,19 +3,26 @@ import Navbar from "./Assets/Components/Navbar";
 import Todos from "./Assets/Components/Todos";
 import Footer from "./Assets/Components/Footer";
 import TodoForm from "./Assets/Components/TodoForm";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
+	let initTodo;
+	if (localStorage.getItem("todos") === null) {
+		initTodo = [];
+	} else {
+		initTodo = JSON.parse(localStorage.getItem("todos"));
+	}
+
 	const onDelete = (todo) => {
 		setTodos(
 			todos.filter((e) => {
 				return e !== todo;
 			})
 		);
+		localStorage.setItem("todos", JSON.stringify(todos));
 	};
 
 	const addTodo = (title, desc) => {
-		// let sno = todos[todos.length - 1].sno + 1;
 		let sno = todos.length + 1;
 		const todoValue = {
 			sno: sno,
@@ -23,26 +30,12 @@ function App() {
 			desc: desc,
 		};
 		setTodos([...todos, todoValue]);
-		console.log(todoValue);
 	};
 
-	const [todos, setTodos] = useState([
-		{
-			sno: 1,
-			title: "Go to Market.",
-			desc: "You need to go to the market to get this job done.",
-		},
-		{
-			sno: 2,
-			title: "Learn Hacking",
-			desc: "You need to learn Hacking Right Now!!",
-		},
-		{
-			sno: 3,
-			title: "Create a Website",
-			desc: "You need to have or create a website Right Now !!",
-		},
-	]);
+	const [todos, setTodos] = useState(initTodo);
+	useEffect(() => {
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}, [todos]);
 
 	return (
 		<div className="App">
