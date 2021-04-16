@@ -7,7 +7,6 @@ import React, { useState } from "react";
 
 function App() {
 	const onDelete = (todo) => {
-		console.log("I am onDelete.");
 		setTodos(
 			todos.filter((e) => {
 				return e !== todo;
