@@ -8,8 +8,9 @@ function TodoForm(props) {
 		e.preventDefault();
 		if (!title || !desc) {
 			alert("Fields cannot be blank. :)");
+		} else {
+			props.addTodo(title, desc);
 		}
-		props.addTodo(title, desc);
 	};
 
 	return (

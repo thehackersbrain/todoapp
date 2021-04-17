@@ -5,7 +5,13 @@ function Footer() {
 				<div className="container">
 					<span className="text-muted">
 						<p align="center">
-							&copy; 2021 All Right Reserved | TheHackersBrain
+							&copy; 2021 All Right Reserved |{" "}
+							<a
+								href="https://github.com/thehackersbrain/"
+								target="_blank"
+							>
+								TheHackersBrain
+							</a>
 						</p>
 					</span>
 				</div>

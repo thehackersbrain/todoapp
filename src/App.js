@@ -3,7 +3,9 @@ import Navbar from "./Assets/Components/Navbar";
 import Todos from "./Assets/Components/Todos";
 import Footer from "./Assets/Components/Footer";
 import TodoForm from "./Assets/Components/TodoForm";
+import About from "./Assets/Components/About";
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
 	let initTodo;
@@ -39,10 +41,27 @@ function App() {
 
 	return (
 		<div className="App">
-			<Navbar title="Todo App" />
-			<Todos todos={todos} onDelete={onDelete} />
-			<Footer />
-			<TodoForm addTodo={addTodo} />
+			<Router>
+				<Navbar title="Todo App" />
+				<Switch>
+					<Route
+						exact
+						path="/"
+						render={() => {
+							return (
+								<div className="TodoArea">
+									<Todos todos={todos} onDelete={onDelete} />
+									<TodoForm addTodo={addTodo} />
+								</div>
+							);
+						}}
+					></Route>
+					<Route exact path="/about">
+						<About />
+					</Route>
+				</Switch>
+				<Footer />
+			</Router>
 		</div>
 	);
 }
