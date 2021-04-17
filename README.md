@@ -13,7 +13,7 @@ npm start
 
 - Building the Application
 ```
-npm build
+npm run build
 ```
 
 ## Credits
